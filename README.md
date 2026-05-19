@@ -31,7 +31,7 @@ A production-ready event management platform with QR-based ticketing, powered by
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/sourabh-prasad-dev/Viz-Event-Manager.git
 cd Viz_Event_Manager
 
 # Install dependencies
@@ -77,6 +77,3 @@ npm run dev
 - [API Reference](docs/api-reference.md) — Apps Script endpoint documentation
 - [Sheets Template](docs/sheets-template.md) — Google Sheets structure
 
-## 📄 License
-
-MIT
