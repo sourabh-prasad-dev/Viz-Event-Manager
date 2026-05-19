@@ -35,7 +35,7 @@ export function Login() {
 
   return (
     <div className="animate-fade-in-scale">
-      <div className="glass rounded-2xl p-8 shadow-2xl shadow-black/30">
+      <div className="glass rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/30">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-surface-100 mb-2">Welcome Back</h1>
           <p className="text-sm text-surface-400">Sign in to manage your events</p>

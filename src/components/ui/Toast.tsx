@@ -8,7 +8,7 @@ export function ToastContainer() {
   if (toasts.length === 0) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] space-y-3 max-w-sm">
+    <div className="fixed bottom-4 right-4 left-4 sm:left-auto sm:bottom-6 sm:right-6 z-[100] space-y-3 max-w-sm">
       {toasts.map((toast) => (
         <ToastItem key={toast.id} toast={toast} onClose={() => removeToast(toast.id)} />
       ))}
@@ -41,7 +41,7 @@ function ToastItem({
     <div
       className={`glass rounded-xl p-4 shadow-2xl shadow-black/30 border-l-4 ${
         borders[toast.type]
-      } animate-slide-right flex items-start gap-3 min-w-[320px]`}
+      } animate-slide-right flex items-start gap-3 w-full sm:min-w-[320px]`}
     >
       <div className="flex-shrink-0 mt-0.5">{icons[toast.type]}</div>
       <div className="flex-1 min-w-0">

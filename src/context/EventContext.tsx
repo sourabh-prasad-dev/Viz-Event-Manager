@@ -102,17 +102,31 @@ export function EventProvider({ children }: { children: React.ReactNode }) {
 
   const isApiConfigured = import.meta.env.VITE_GAS_URL && import.meta.env.VITE_GAS_URL !== 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
 
+  const normalizeEvent = (raw: any): Event => ({
+    id: raw.id || raw.EventId || '',
+    name: raw.name || raw.Name || '',
+    date: raw.date || raw.Date || '',
+    venue: raw.venue || raw.Venue || '',
+    description: raw.description || raw.Description || '',
+    sheetUrl: raw.sheetUrl || raw.SheetUrl || '',
+    status: raw.status || raw.Status || 'draft',
+    attendeeCount: raw.attendeeCount || raw.AttendeeCount || 0,
+    scannedCount: raw.scannedCount || raw.ScannedCount || 0,
+    createdAt: raw.createdAt || raw.CreatedAt || new Date().toISOString(),
+  });
+
   const refreshData = useCallback(async () => {
     setLoading(true);
     if (isApiConfigured) {
       try {
         const eventsRes = await api.getEvents();
         if (eventsRes.status === 'success' && eventsRes.data) {
-          setEvents(eventsRes.data);
+          const normalizedEvents = eventsRes.data.map(normalizeEvent);
+          setEvents(normalizedEvents);
           // If we have events, fetch attendees for all of them
           // In a real large-scale app, you'd fetch per-event or paginate
           const allAttendees: Attendee[] = [];
-          for (const ev of eventsRes.data) {
+          for (const ev of normalizedEvents) {
              const attRes = await api.getAttendees(ev.id);
              if (attRes.status === 'success' && attRes.data) {
                 allAttendees.push(...attRes.data);

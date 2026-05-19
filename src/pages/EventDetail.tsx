@@ -16,7 +16,7 @@ import type { Attendee } from '@/types';
 export function EventDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { events, getEventAttendees, addAttendee } = useEvents();
+  const { events, getEventAttendees, addAttendee, refreshData } = useEvents();
   const { addToast } = useToast();
   const [activeTab, setActiveTab] = useState('attendees');
   const [showOnSpotModal, setShowOnSpotModal] = useState(false);
@@ -57,6 +57,12 @@ export function EventDetail() {
     addToast('success', 'Walk-in registered', `${onSpotForm.fullName} has been added.`);
   };
 
+  const handleSyncSheet = async () => {
+    addToast('info', 'Syncing...', 'Fetching latest data from Google Sheets.');
+    await refreshData();
+    addToast('success', 'Sync complete', 'Latest attendees loaded.');
+  };
+
   const tabs = [
     { key: 'attendees', label: 'Attendees', icon: <Users className="w-4 h-4" /> },
     { key: 'qr', label: 'QR Codes', icon: <QrCode className="w-4 h-4" /> },
@@ -92,7 +98,7 @@ export function EventDetail() {
             </div>
           </div>
           <div className="flex gap-3">
-            <Button variant="outline" icon={<RefreshCw className="w-4 h-4" />} onClick={() => addToast('info', 'Syncing...', 'Fetching latest data from Google Sheets.')}>Sync Sheet</Button>
+            <Button variant="outline" icon={<RefreshCw className="w-4 h-4" />} onClick={handleSyncSheet}>Sync Sheet</Button>
             <Button variant="secondary" icon={<UserPlus className="w-4 h-4" />} onClick={() => setShowOnSpotModal(true)}>Walk-in</Button>
           </div>
         </div>

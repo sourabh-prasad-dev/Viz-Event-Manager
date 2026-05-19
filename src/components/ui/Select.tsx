@@ -10,7 +10,7 @@ export function Select({ label, options, error, className = '', id, ...props }: 
   const selectId = id || label?.toLowerCase().replace(/\s+/g, '-');
 
   return (
-    <div className="space-y-1.5">
+    <div className="flex flex-col gap-2">
       {label && (
         <label htmlFor={selectId} className="block text-sm font-medium text-surface-300">
           {label}

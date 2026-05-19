@@ -24,7 +24,7 @@ export function Events() {
   const [menuOpen, setMenuOpen] = useState<string | null>(null);
   const [form, setForm] = useState({ name: '', date: '', venue: '', description: '', sheetUrl: '', status: 'draft' as Event['status'] });
 
-  const filtered = events.filter((e) => e.name.toLowerCase().includes(search.toLowerCase()) || e.venue.toLowerCase().includes(search.toLowerCase()));
+  const filtered = events.filter((e) => (e.name || '').toLowerCase().includes(search.toLowerCase()) || (e.venue || '').toLowerCase().includes(search.toLowerCase()));
 
   const handleCreate = (e: React.FormEvent) => {
     e.preventDefault();

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 
 interface ModalProps {
@@ -38,34 +39,40 @@ export function Modal({ isOpen, onClose, title, children, size = 'md' }: ModalPr
     xl: 'max-w-4xl',
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+  return createPortal(
+    <div className="fixed inset-0 z-[999] overflow-y-auto">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fade-in"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"
         onClick={onClose}
       />
 
-      {/* Modal */}
-      <div
-        className={`relative ${sizes[size]} w-full glass rounded-2xl shadow-2xl shadow-black/40 animate-fade-in-scale`}
-      >
-        {/* Header */}
-        {title && (
-          <div className="flex items-center justify-between px-6 py-4 border-b border-surface-700/50">
-            <h2 className="text-lg font-semibold text-surface-100">{title}</h2>
-            <button
-              onClick={onClose}
-              className="p-1.5 rounded-lg text-surface-400 hover:text-surface-200 hover:bg-surface-700/50 transition-colors cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-        )}
+      {/* Centering wrapper */}
+      <div className="flex min-h-full items-center justify-center p-4 sm:p-6 text-center">
+        {/* Modal Card */}
+        <div
+          className={`relative ${sizes[size]} w-full glass rounded-2xl shadow-2xl shadow-black/50 text-left z-10 my-8 transform transition-all duration-300 animate-fade-in-scale flex flex-col`}
+        >
+          {/* Header */}
+          {title && (
+            <div className="flex items-center justify-between px-6 py-4.5 border-b border-surface-700/50 flex-shrink-0">
+              <h2 className="text-lg font-semibold text-surface-100">{title}</h2>
+              <button
+                onClick={onClose}
+                className="p-1.5 rounded-lg text-surface-400 hover:text-surface-200 hover:bg-surface-700/50 transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+          )}
 
-        {/* Body */}
-        <div className="p-6 max-h-[70vh] overflow-y-auto">{children}</div>
+          {/* Body */}
+          <div className="p-6 overflow-y-auto max-h-[calc(100vh-16rem)] sm:max-h-[75vh] md:max-h-[80vh]">
+            {children}
+          </div>
+        </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
