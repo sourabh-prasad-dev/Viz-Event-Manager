@@ -70,17 +70,19 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
         </div>
 
         {/* Navigation */}
-        <nav className={`flex-1 py-5 space-y-1.5 overflow-y-auto ${collapsed ? 'px-2' : 'px-4'}`}>
+        <nav className={`flex-1 sidebar-nav-container overflow-y-auto ${collapsed ? 'px-2' : 'px-4'}`}>
           {filteredItems.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
+                `transition-all duration-200 group text-sm font-medium ${
+                  collapsed ? 'sidebar-link-item-collapsed' : 'sidebar-link-item'
+                } ${
                   isActive
                     ? 'gradient-primary text-white shadow-lg shadow-primary-500/20'
                     : 'text-surface-400 hover:text-surface-100 hover:bg-surface-800/60'
-                } ${collapsed ? 'justify-center px-0' : ''}`
+                }`
               }
               title={collapsed ? item.label : undefined}
             >
@@ -91,7 +93,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
         </nav>
 
         {/* User section */}
-        <div className={`border-t border-surface-800/50 space-y-2 ${collapsed ? 'p-2 pb-4' : 'p-4 pb-5'}`}>
+        <div className={`border-t border-surface-800/50 sidebar-user-container ${collapsed ? 'p-2' : ''}`}>
           {!collapsed && user && (
             <div className="px-3.5 py-3 rounded-xl bg-surface-800/40">
               <p className="text-sm font-medium text-surface-200 truncate">{user.name}</p>
@@ -100,9 +102,9 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
           )}
           <button
             onClick={logout}
-            className={`flex items-center gap-3 w-full px-3.5 py-3 rounded-xl text-sm font-medium text-surface-400 hover:text-danger-400 hover:bg-danger-500/10 transition-all duration-200 cursor-pointer ${
-              collapsed ? 'justify-center px-0' : ''
-            }`}
+            className={`transition-all duration-200 cursor-pointer text-sm font-medium ${
+              collapsed ? 'sidebar-link-item-collapsed' : 'sidebar-link-item'
+            } text-surface-400 hover:text-danger-400 hover:bg-danger-500/10`}
             title="Logout"
           >
             <LogOut className="w-5 h-5 flex-shrink-0" />
@@ -113,7 +115,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
         {/* Toggle Button */}
         <button
           onClick={onToggle}
-          className="absolute -right-3.5 top-[76px] w-7 h-7 rounded-full bg-surface-800 border border-surface-700 flex items-center justify-center text-surface-400 hover:text-surface-200 hover:border-primary-500 transition-all duration-200 cursor-pointer shadow-md"
+          className="absolute -right-3.5 top-[22px] w-7 h-7 rounded-full bg-surface-800 border border-surface-700 flex items-center justify-center text-surface-400 hover:text-surface-200 hover:border-primary-500 transition-all duration-200 cursor-pointer shadow-md"
         >
           {collapsed ? (
             <ChevronRight className="w-3.5 h-3.5" />

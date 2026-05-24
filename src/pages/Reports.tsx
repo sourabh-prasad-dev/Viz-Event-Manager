@@ -58,7 +58,8 @@ export function Reports() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+      {/* Page header */}
+      <div className="page-header-container">
         <Select options={eventOptions} value={selectedEvent} onChange={(e) => setSelectedEvent(e.target.value)} />
         <div className="flex gap-3">
           <Button variant="secondary" icon={<Printer className="w-4 h-4" />} onClick={() => window.print()}>Print</Button>
@@ -66,14 +67,14 @@ export function Reports() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="stat-grid-4col">
         <StatCard title="Total Registered" value={totalRegistered} icon={<Users className="w-5 h-5" />} color="primary" />
         <StatCard title="Checked In" value={totalCheckedIn} icon={<ScanLine className="w-5 h-5" />} color="success" />
         <StatCard title="Pending / No-show" value={totalPending} icon={<Clock className="w-5 h-5" />} color="warning" />
         <StatCard title="On-Spot" value={totalOnSpot} icon={<UserPlus className="w-5 h-5" />} color="accent" />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="content-grid-2col">
         <Card>
           <h3 className="text-lg font-semibold text-surface-100 mb-1">Event Comparison</h3>
           <p className="text-sm text-surface-500 mb-4">Registered vs Checked In per event</p>

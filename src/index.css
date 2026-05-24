@@ -249,3 +249,232 @@ body {
 #qr-reader video {
   border-radius: 12px;
 }
+
+/* ─── Premium Layout & Spacing Overrides ────────────────── */
+.force-pl-10 {
+  padding-left: 42px !important;
+}
+.force-pr-10 {
+  padding-right: 42px !important;
+}
+.force-px-4 {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+.flex-col-gap-1-5 {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+.flex-col-gap-2 {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+.flex-col-gap-4 {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+.flex-col-gap-5 {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+.flex-col-gap-6 {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+}
+.flex-col-gap-8 {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 32px !important;
+}
+.login-card {
+  padding: 32px !important;
+}
+@media (min-width: 640px) {
+  .login-card {
+    padding: 40px !important;
+  }
+}
+.login-demo-box {
+  margin-top: 32px !important;
+  padding: 20px !important;
+}
+
+/* ─── Premium Dashboard & Page Layout Styles ───────────── */
+.dashboard-main-content {
+  padding: 20px !important;
+}
+@media (min-width: 640px) {
+  .dashboard-main-content {
+    padding: 28px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .dashboard-main-content {
+    padding: 40px !important;
+  }
+}
+
+.page-header-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.4) !important;
+  margin-bottom: 28px !important;
+}
+@media (min-width: 640px) {
+  .page-header-container {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 20px !important;
+  }
+}
+
+.stat-grid-4col {
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+  margin-bottom: 28px !important;
+}
+@media (min-width: 640px) {
+  .stat-grid-4col {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .stat-grid-4col {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+.content-grid-2col {
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+}
+@media (min-width: 1024px) {
+  .content-grid-2col {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+  }
+}
+
+.content-grid-3col {
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+}
+@media (min-width: 768px) {
+  .content-grid-3col {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+  }
+}
+@media (min-width: 1280px) {
+  .content-grid-3col {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+.dashboard-chart-grid {
+  display: grid !important;
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+}
+@media (min-width: 1024px) {
+  .dashboard-chart-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ─── Premium Card Padding Utilities ───────────────────── */
+.card-pad-none {
+  padding: 0px !important;
+}
+.card-pad-sm {
+  padding: 16px !important;
+}
+.card-pad-md {
+  padding: 24px !important;
+}
+@media (min-width: 640px) {
+  .card-pad-md {
+    padding: 28px !important;
+  }
+}
+.card-pad-lg {
+  padding: 28px !important;
+}
+@media (min-width: 640px) {
+  .card-pad-lg {
+    padding: 32px !important;
+  }
+}
+.card-pad-xl {
+  padding: 32px !important;
+}
+@media (min-width: 640px) {
+  .card-pad-xl {
+    padding: 40px !important;
+  }
+}
+
+/* ─── Premium Header Alignment Utilities ────────────────── */
+.header-padding {
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+@media (min-width: 640px) {
+  .header-padding {
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .header-padding {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+}
+
+/* ─── Premium Sidebar Spacing Overrides ────────────────── */
+.sidebar-nav-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
+.sidebar-link-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+  border-radius: 12px !important;
+}
+.sidebar-link-item-collapsed {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-top: 14px !important;
+  padding-bottom: 14px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  border-radius: 12px !important;
+}
+.sidebar-user-container {
+  padding: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}

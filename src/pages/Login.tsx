@@ -35,13 +35,13 @@ export function Login() {
 
   return (
     <div className="animate-fade-in-scale">
-      <div className="glass rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/30">
+      <div className="glass rounded-2xl login-card shadow-2xl shadow-black/40">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-surface-100 mb-2">Welcome Back</h1>
           <p className="text-sm text-surface-400">Sign in to manage your events</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form onSubmit={handleSubmit} className="flex-col-gap-6">
           <Input
             label="Email"
             type="email"
@@ -84,7 +84,7 @@ export function Login() {
         </form>
 
         {/* Demo credentials hint */}
-        <div className="mt-6 p-4 rounded-xl bg-surface-800/50 border border-surface-700/50">
+        <div className="login-demo-box rounded-xl bg-surface-800/50 border border-surface-700/50">
           <p className="text-xs font-medium text-surface-400 mb-2">Demo Credentials</p>
           <div className="space-y-1.5 text-xs text-surface-500">
             <p>

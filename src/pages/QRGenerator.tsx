@@ -43,7 +43,8 @@ export function QRGenerator() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+      {/* Page header */}
+      <div className="page-header-container">
         <div className="flex flex-wrap items-center gap-3">
           <Select options={eventOptions} value={selectedEvent} onChange={(e) => setSelectedEvent(e.target.value)} />
           <SearchBar value={search} onChange={setSearch} placeholder="Search attendees..." className="w-64" />
@@ -54,12 +55,14 @@ export function QRGenerator() {
         </div>
       </div>
 
-      <p className="text-sm text-surface-400">{filtered.length} QR codes generated</p>
+      <p className="text-sm font-medium text-surface-400">
+        <span className="text-surface-200 font-semibold">{filtered.length}</span> QR codes generated
+      </p>
 
       {filtered.length === 0 ? (
         <EmptyState title="No QR codes to display" description="Select an event with synced attendees to generate QR codes." />
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 print:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 print:grid-cols-4">
           {filtered.map((attendee, idx) => (
             <Card key={attendee.registrationId} padding="sm" className="text-center group animate-fade-in" style={{ animationDelay: `${idx * 30}ms` }}>
               <div className="bg-white rounded-xl p-3 mb-3 mx-auto w-fit">

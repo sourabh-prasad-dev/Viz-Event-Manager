@@ -21,7 +21,7 @@ export function StatCard({ title, value, icon, trend, color = 'primary' }: StatC
   const colors = colorMap[color];
 
   return (
-    <div className={`glass rounded-2xl p-6 hover:shadow-lg ${colors.glow} transition-all duration-300 group`}>
+    <div className={`glass rounded-2xl card-pad-md hover:shadow-xl ${colors.glow} transition-all duration-300 group`}>
       <div className="flex items-start justify-between mb-4">
         <div className={`p-3 rounded-xl ${colors.bg} ${colors.text} group-hover:scale-110 transition-transform duration-300`}>
           {icon}

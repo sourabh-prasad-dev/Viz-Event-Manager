@@ -81,9 +81,12 @@ export function EventDetail() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <button onClick={() => navigate('/events')} className="flex items-center gap-2 text-sm text-surface-400 hover:text-surface-200 transition-colors cursor-pointer">
-        <ArrowLeft className="w-4 h-4" /> Back to Events
-      </button>
+      {/* Back button & page header separator */}
+      <div className="pb-2 border-b border-surface-800/50">
+        <button onClick={() => navigate('/events')} className="flex items-center gap-2 text-sm text-surface-400 hover:text-surface-200 transition-colors cursor-pointer">
+          <ArrowLeft className="w-4 h-4" /> Back to Events
+        </button>
+      </div>
 
       <Card>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
@@ -103,18 +106,18 @@ export function EventDetail() {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-5 mt-8">
-          <div className="text-center p-3 rounded-xl bg-surface-800/50">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 mt-8">
+          <div className="text-center p-4 rounded-xl bg-surface-800/50 border border-surface-700/20">
             <p className="text-2xl font-bold text-surface-100">{attendees.length}</p>
-            <p className="text-xs text-surface-500">Total Registered</p>
+            <p className="text-xs text-surface-500 mt-1">Total Registered</p>
           </div>
-          <div className="text-center p-3 rounded-xl bg-success-500/10">
+          <div className="text-center p-4 rounded-xl bg-success-500/10 border border-success-500/20">
             <p className="text-2xl font-bold text-success-400">{approved}</p>
-            <p className="text-xs text-surface-500">Checked In</p>
+            <p className="text-xs text-surface-500 mt-1">Checked In</p>
           </div>
-          <div className="text-center p-3 rounded-xl bg-warning-500/10">
+          <div className="text-center p-4 rounded-xl bg-warning-500/10 border border-warning-500/20">
             <p className="text-2xl font-bold text-warning-400">{pending}</p>
-            <p className="text-xs text-surface-500">Pending</p>
+            <p className="text-xs text-surface-500 mt-1">Pending</p>
           </div>
         </div>
       </Card>

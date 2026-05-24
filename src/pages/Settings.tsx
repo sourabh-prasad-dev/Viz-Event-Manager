@@ -121,12 +121,15 @@ export function Settings() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <div className="flex flex-wrap items-center gap-1 bg-surface-800/50 rounded-xl p-1 w-fit">
-        {tabs.map((tab) => (
-          <button key={tab.key} onClick={() => setActiveTab(tab.key)} className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${activeTab === tab.key ? 'gradient-primary text-white' : 'text-surface-400 hover:text-surface-200'}`}>
-            {tab.icon}{tab.label}
-          </button>
-        ))}
+      {/* Tab bar */}
+      <div className="page-header-container">
+        <div className="flex flex-wrap items-center gap-1 bg-surface-800/50 rounded-xl p-1 w-fit">
+          {tabs.map((tab) => (
+            <button key={tab.key} onClick={() => setActiveTab(tab.key)} className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer ${activeTab === tab.key ? 'gradient-primary text-white' : 'text-surface-400 hover:text-surface-200'}`}>
+              {tab.icon}{tab.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {activeTab === 'users' && (

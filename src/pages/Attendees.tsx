@@ -44,7 +44,20 @@ export function Attendees() {
   };
 
   const columns = [
-    { key: 'registrationId', header: 'Reg. ID', sortable: true, width: '120px' },
+    {
+      key: 'registrationId',
+      header: 'Reg. ID',
+      sortable: true,
+      width: '120px',
+      render: (a: Attendee) => (
+        <span
+          className="font-mono text-xs text-surface-400 select-all truncate block max-w-[110px]"
+          title={a.registrationId}
+        >
+          {a.registrationId}
+        </span>
+      ),
+    },
     { key: 'fullName', header: 'Name', sortable: true, render: (a: Attendee) => <span className="font-medium text-surface-100">{a.fullName}</span> },
     { key: 'email', header: 'Email', sortable: true },
     { key: 'phone', header: 'Phone' },
@@ -57,7 +70,8 @@ export function Attendees() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+      {/* Filters bar */}
+      <div className="page-header-container">
         <div className="flex flex-wrap items-center gap-3">
           <SearchBar value={search} onChange={setSearch} placeholder="Search attendees..." className="w-64" />
           <Select options={eventOptions} value={eventFilter} onChange={(e) => setEventFilter(e.target.value)} />
@@ -66,12 +80,12 @@ export function Attendees() {
         <Button variant="secondary" icon={<Download className="w-4 h-4" />} onClick={handleExport}>Export CSV</Button>
       </div>
 
-      <div className="flex items-center gap-4 text-sm text-surface-400">
-        <span>{filtered.length} attendees</span>
-        <span>·</span>
-        <span className="text-success-400">{filtered.filter((a) => a.status === 'Approved').length} checked in</span>
-        <span>·</span>
-        <span className="text-warning-400">{filtered.filter((a) => a.status === 'Pending').length} pending</span>
+      <div className="flex items-center gap-4 text-sm">
+        <span className="font-medium text-surface-300">{filtered.length} attendees</span>
+        <span className="text-surface-700">·</span>
+        <span className="text-success-400 font-medium">{filtered.filter((a) => a.status === 'Approved').length} checked in</span>
+        <span className="text-surface-700">·</span>
+        <span className="text-warning-400 font-medium">{filtered.filter((a) => a.status === 'Pending').length} pending</span>
       </div>
 
       <DataTable columns={columns} data={filtered} keyExtractor={(item: any) => item.registrationId} emptyMessage="No attendees match your filters." pageSize={15} />

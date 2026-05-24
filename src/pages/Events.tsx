@@ -42,7 +42,8 @@ export function Events() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+      {/* Page header bar */}
+      <div className="page-header-container">
         <div className="flex items-center gap-4 flex-1">
           <SearchBar value={search} onChange={setSearch} placeholder="Search events..." className="max-w-xs" />
         </div>
@@ -58,7 +59,7 @@ export function Events() {
       {filtered.length === 0 ? (
         <EmptyState title="No events found" description="Create your first event to get started." action={<Button icon={<Plus className="w-4 h-4" />} onClick={() => setShowCreateModal(true)}>Create Event</Button>} />
       ) : viewMode === 'grid' ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div className="content-grid-3col">
           {filtered.map((event, idx) => (
             <Card key={event.id} hover className="relative" style={{ animationDelay: `${idx * 60}ms` }} onClick={() => navigate(`/events/${event.id}`)}>
               <div className="absolute top-4 right-4 z-10">
@@ -87,7 +88,7 @@ export function Events() {
           ))}
         </div>
       ) : (
-        <div className="space-y-2">
+        <div className="space-y-3">
           {filtered.map((event, idx) => (
             <div key={event.id} className="glass rounded-xl p-4 flex items-center gap-4 hover:border-primary-500/30 transition-all cursor-pointer animate-fade-in" style={{ animationDelay: `${idx * 40}ms` }} onClick={() => navigate(`/events/${event.id}`)}>
               <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center text-primary-400 flex-shrink-0"><Calendar className="w-5 h-5" /></div>

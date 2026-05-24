@@ -55,14 +55,14 @@ export function DataTable({
 
   return (
     <div className="space-y-4">
-      <div className="overflow-x-auto rounded-xl border border-surface-700/50">
-        <table className="w-full text-sm">
+      <div className="overflow-x-auto rounded-2xl border border-surface-700/50">
+        <table className="w-full min-w-[900px] text-sm">
           <thead>
             <tr className="bg-surface-800/80">
               {columns.map((col) => (
                 <th
                   key={col.key}
-                  className={`px-4 py-3 text-left text-xs font-semibold text-surface-400 uppercase tracking-wider ${
+                  className={`px-6 py-4 text-left text-xs font-semibold text-surface-400 uppercase tracking-wider ${
                     col.sortable ? 'cursor-pointer hover:text-surface-200 select-none' : ''
                   }`}
                   style={{ width: col.width }}
@@ -91,7 +91,7 @@ export function DataTable({
           <tbody className="divide-y divide-surface-800">
             {paginated.length === 0 ? (
               <tr>
-                <td colSpan={columns.length} className="px-4 py-12 text-center text-surface-500">
+                <td colSpan={columns.length} className="px-6 py-12 text-center text-surface-500">
                   {emptyMessage}
                 </td>
               </tr>
@@ -106,7 +106,7 @@ export function DataTable({
                   style={{ animationDelay: `${idx * 30}ms` }}
                 >
                   {columns.map((col) => (
-                    <td key={col.key} className="px-4 py-3.5 text-surface-200">
+                    <td key={col.key} className="px-6 py-4 text-surface-200">
                       {col.render ? col.render(item) : String(item[col.key] ?? '—')}
                     </td>
                   ))}

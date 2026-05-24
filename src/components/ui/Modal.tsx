@@ -55,7 +55,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'md' }: ModalPr
         >
           {/* Header */}
           {title && (
-            <div className="flex items-center justify-between px-6 py-4.5 border-b border-surface-700/50 flex-shrink-0">
+            <div className="flex items-center justify-between px-7 py-5 border-b border-surface-700/50 flex-shrink-0">
               <h2 className="text-lg font-semibold text-surface-100">{title}</h2>
               <button
                 onClick={onClose}
@@ -67,7 +67,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'md' }: ModalPr
           )}
 
           {/* Body */}
-          <div className="p-6 overflow-y-auto max-h-[calc(100vh-16rem)] sm:max-h-[75vh] md:max-h-[80vh]">
+          <div className="px-7 py-6 overflow-y-auto max-h-[calc(100vh-16rem)] sm:max-h-[75vh] md:max-h-[80vh]">
             {children}
           </div>
         </div>

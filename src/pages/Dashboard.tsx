@@ -43,7 +43,8 @@ export function Dashboard() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+      {/* Page header */}
+      <div className="page-header-container">
         <div>
           <h2 className="text-2xl font-bold text-surface-100">Welcome back, {user?.name?.split(' ')[0]} 👋</h2>
           <p className="text-surface-400 text-sm mt-1.5">Here's what's happening with your events today.</p>
@@ -54,14 +55,14 @@ export function Dashboard() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="stat-grid-4col">
         <StatCard title="Total Events" value={totalEvents} icon={<Calendar className="w-5 h-5" />} color="primary" trend={{ value: 12, label: 'from last month' }} />
         <StatCard title="Total Attendees" value={totalAttendees} icon={<Users className="w-5 h-5" />} color="accent" trend={{ value: 24, label: 'from last month' }} />
         <StatCard title="Checked In" value={totalScanned} icon={<ScanLine className="w-5 h-5" />} color="success" trend={{ value: 8, label: 'from yesterday' }} />
         <StatCard title="Pending" value={totalPending} icon={<Clock className="w-5 h-5" />} color="warning" trend={{ value: -5, label: 'from yesterday' }} />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="dashboard-chart-grid">
         <Card className="lg:col-span-2">
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -72,7 +73,7 @@ export function Dashboard() {
           </div>
           <div className="h-[280px]">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={scanTrendData}>
+              <AreaChart data={scanTrendData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="scanGradient" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#6366f1" stopOpacity={0.3} />
@@ -94,8 +95,8 @@ export function Dashboard() {
           <p className="text-sm text-surface-500 mb-4">Attendee distribution</p>
           <div className="h-[200px]">
             <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie data={statusData} cx="50%" cy="50%" innerRadius={55} outerRadius={80} paddingAngle={4} dataKey="value">
+              <PieChart margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
+                <Pie data={statusData} cx="50%" cy="50%" innerRadius={48} outerRadius={70} paddingAngle={4} dataKey="value">
                   {statusData.map((entry, index) => (<Cell key={index} fill={entry.color} />))}
                 </Pie>
                 <Tooltip contentStyle={chartTooltipStyle} />
@@ -116,7 +117,7 @@ export function Dashboard() {
         </Card>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-7">
         <Card>
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-surface-100">Active Events</h3>

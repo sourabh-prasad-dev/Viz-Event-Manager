@@ -49,7 +49,7 @@ export function DashboardLayout() {
         className="transition-all duration-300 min-h-screen flex flex-col"
       >
         <Header onMenuClick={() => setMobileMenuOpen(!mobileMenuOpen)} />
-        <main className="flex-1 px-4 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-8">
+        <main className="flex-1 dashboard-main-content">
           <div className="max-w-[1600px] mx-auto">
             <Outlet />
           </div>

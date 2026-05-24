@@ -135,7 +135,8 @@ export function Scanner() {
 
   return (
     <div className="max-w-2xl mx-auto space-y-8 animate-fade-in">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+      {/* Event selector bar */}
+      <div className="page-header-container">
         <Select options={eventOptions} value={selectedEvent} onChange={(e) => { setSelectedEvent(e.target.value); setScanCount(0); }} />
         <div className="flex items-center gap-3">
           <Badge variant="primary" size="md">{scanCount} scanned</Badge>

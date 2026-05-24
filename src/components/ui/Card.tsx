@@ -11,10 +11,11 @@ interface CardProps {
 
 export function Card({ children, className = '', hover = false, onClick, padding = 'md', style }: CardProps) {
   const paddingMap: Record<string, string> = {
-    none: '',
-    sm: 'p-4',
-    md: 'p-6',
-    lg: 'p-8',
+    none: 'card-pad-none',
+    sm: 'card-pad-sm',
+    md: 'card-pad-md',
+    lg: 'card-pad-lg',
+    xl: 'card-pad-xl',
   };
 
   return (

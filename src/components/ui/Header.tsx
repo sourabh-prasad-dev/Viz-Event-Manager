@@ -25,7 +25,7 @@ export function Header({ onMenuClick }: HeaderProps) {
   const title = pageTitles[location.pathname] || 'VizEvent';
 
   return (
-    <header className="h-[72px] flex items-center justify-between px-4 sm:px-6 lg:px-10 border-b border-surface-800/50 bg-surface-950/80 backdrop-blur-lg sticky top-0 z-30">
+    <header className="h-[72px] flex items-center justify-between header-padding border-b border-surface-800/50 bg-surface-950/80 backdrop-blur-lg sticky top-0 z-30">
       <div className="flex items-center gap-4">
         <button
           onClick={onMenuClick}
